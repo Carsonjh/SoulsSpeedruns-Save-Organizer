@@ -772,14 +772,18 @@ public class SaveList extends JList<SaveListEntry> implements ListSelectionListe
 	@Override
 	public void navigatedToPrevious()
 	{
-		setSelectedIndex(Math.max(0, getSelectedIndex() - 1));
+		int prevIndex = Math.max(0, getSelectedIndex() - 1);
+		setSelectedIndex(prevIndex);
+		ensureIndexIsVisible(prevIndex);
 	}
 
 
 	@Override
 	public void navigatedToNext()
 	{
-		setSelectedIndex(Math.min(getModel().getSize(), getSelectedIndex() + 1));
+		int nextIndex = Math.min(getModel().getSize(), getSelectedIndex() + 1);
+		setSelectedIndex(nextIndex);
+		ensureIndexIsVisible(nextIndex);
 	}
 
 }
